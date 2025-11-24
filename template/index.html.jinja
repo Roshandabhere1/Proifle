@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user.name }} | Git Profile</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .repo { border: 1px solid #ddd; padding: 10px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>{{ user.name }} ({{ user.login }})</h1>
+    <p>{{ user.bio }}</p>
+    <p><strong>Followers:</strong> {{ user.followers }}</p>
+    <p><strong>Following:</strong> {{ user.following }}</p>
+
+    <h2>Top Projects</h2>
+    {% for repo in repos %}
+        <div class="repo">
+            <h3>{{ repo.name }}</h3>
+            <p>{{ repo.description }}</p>
+            <p>⭐ {{ repo.stargazers_count }}</p>
+            <a href="{{ repo.html_url }}">View Repo</a>
+        </div>
+    {% endfor %}
+</body>
+</html>
+
